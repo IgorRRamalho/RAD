@@ -1,9 +1,9 @@
+import { Component } from "react";
 import Logo from "../assets/logo_original.svg";
 
 export default function Head() {
   return (
-    <>
-      <header className="head">
+    <> 
         <div className="nav-bar">
           <img
             src={Logo}
@@ -28,10 +28,12 @@ export default function Head() {
             </li>
           </ul>
         </div>
+
         <div className="login">
           <a href="#">Fazer Login</a>
         </div>
-      </header>
     </>
   );
 }
+
+
