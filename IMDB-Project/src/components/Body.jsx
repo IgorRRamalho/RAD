@@ -5,7 +5,6 @@ export default function Body() {
   return (
     <>
       <div className="content-wrapper">
-        <h1>AAAAAA</h1>
         <div className="cards-wrapper">
             
         </div>
