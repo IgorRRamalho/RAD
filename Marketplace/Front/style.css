@@ -1,0 +1,32 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+nav{
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+
+}
+
+ul{
+    list-style: none; 
+}
+
+a{
+    
+      text-decoration: none;
+    color: black;
+    padding: 1em;
+}
+
+a:hover{
+    
+    transition-duration: 0.3s;
+    font-weight: 300;
+    font-size: large;
+}

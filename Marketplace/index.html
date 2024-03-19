@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="Front/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace</title>
+</head>
+<body>
+
+<nav> 
+    <ul>
+        <li>
+            <a href="#" >SACOLA</a>
+            <a href="#" >PAGAMENTO</a>
+            <a href="#" >CONFIRMAÇÃO</a>
+        </li>
+    </ul>
+</nav>
+
+<main>
+    <h1>Dados do Carrinho</h1>
+    <div id="cartData"></div>
+    <script>
+        // Array to store fetched data
+        let dataArray = [];
+
+        function cartExport() {
+            fetch("https://65f2497c034bdbecc7648b04.mockapi.io/api/v1/cart")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Erro na solicitação da API");
+                }
+                return response.json();
+            })
+            .then((data) => {
+                // Processar os dados da resposta
+                console.log(data);
+                // Push data to the array
+                dataArray.push(data);
+                // Exibir os dados na página
+                const dados = JSON.stringify(data, null, 2);
+                const cartDataDiv = document.getElementById("cartData");
+                cartDataDiv.innerHTML = "<pre>" + dados + "</pre>";
+                // Chama a função quando a página carrega
+                Item(dataArray, cartDataDiv);
+            })
+            .catch((error) => {
+                console.error("Houve um erro:", error);
+            });
+        }
+        
+        function Item(dataArray, cartDataDiv){
+            dataArray.forEach(item => {
+                const itemDiv = document.createElement("div");
+                itemDiv.classList.add("cart-item");
+
+                const itemIdHeading = document.createElement("h2");
+                itemIdHeading.textContent = `Item ID: ${item.id}`;
+
+                const itemNameParagraph = document.createElement("p");
+                itemNameParagraph.textContent = `Nome do Item: ${item.name}`;
+
+                const itemPriceParagraph = document.createElement("p");
+                itemPriceParagraph.textContent = `Preço: $${item.price}`;
+
+                itemDiv.appendChild(itemIdHeading);
+                itemDiv.appendChild(itemNameParagraph);
+                itemDiv.appendChild(itemPriceParagraph);
+
+                cartDataDiv.appendChild(itemDiv);
+            });
+        }
+        
+        // Chama a função quando a página carrega
+        cartExport();
+    </script>
+</main>
+</body>
+</html>
