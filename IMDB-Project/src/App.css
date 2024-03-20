@@ -1,13 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
 
-*, html {
+* {
   font-family: "Source Sans 3", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   font-weight: 600;
   font-size: 1em;
   margin: 0;
+  padding: 0;
 }
+
 
 header {
   background-color: #032541;
@@ -15,7 +17,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
   top: 0;
   left: 0;
   height: 64px;
@@ -60,14 +61,19 @@ a {
   margin-right: 2em;
 }
 
-body{
-  margin-top: 64px;
-  background-color: black;
-}
 
 .content-wrapper{
   width: 100%;
-  height: 100%;
-  background-color: red; /* Cor de fundo apenas para visualização */
+  height: 100;
+  /* background-color: red; Cor de fundo apenas para visualização */
   box-sizing: border-box; /* Para incluir a margem e o preenchimento na largura e altura */
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px 40px;
+    
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
 }
