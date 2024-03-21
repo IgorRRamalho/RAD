@@ -4,7 +4,8 @@ import App from './App.jsx'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: 'https://flyby-router-demo.herokuapp.com/',
+  // uri: 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1',
+  uri: ' https://flyby-router-demo.herokuapp.com/',
   cache: new InMemoryCache(),
 });
 
