@@ -2,36 +2,32 @@
 import { Component } from "react";
 import { useQuery, gql } from "@apollo/client";
 
-const GET_LOCATIONS = gql`
-  query GetLocations {
-    locations {
+const GET_MOVIE = gql`
+  query GetMovie {
+    page
+    results{
       id
-      name
-      description
-      photo
     }
   }
 `;
 
 export default function MovieList() {
-  const { loading, error, data } = useQuery(GET_LOCATIONS);
+  const { loading, error, data } = useQuery(GET_MOVIE);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  return data.locations.map(({ id, name, description, photo }) => (
+  return data.results.map(({ id, original_title, release_date}) => (
     <div key={id}>
-      <h3>{name}</h3>
-      <img width="400" height="250" alt="location-reference" src={`${photo}`} />
+      <h3>{original_title}</h3>
+      {/* <img width="400" height="250" alt="location-reference" src={`${photo}`} /> */}
       <br />
-      <b>About this location:</b>
-      <p>{description}</p>
+      <b>Release_date:</b>
+      <p>{release_date}</p>
       <br />
     </div>
   ));
 }
-
-
 
 // {
 //     "page": 1,
@@ -56,4 +52,3 @@ export default function MovieList() {
 //         "vote_average": 6.5,
 //         "vote_count": 1886
 //     }
-      
